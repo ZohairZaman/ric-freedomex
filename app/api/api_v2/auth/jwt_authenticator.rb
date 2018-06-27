@@ -45,6 +45,7 @@ module APIv2
     private
 
       def decode_and_verify_token(token)
+        binding.pry
         JWT.decode(token, Utils.jwt_public_key, true, token_verification_options)
            .tap { |pair| pair[0].symbolize_keys! }
       rescue JWT::DecodeError => e

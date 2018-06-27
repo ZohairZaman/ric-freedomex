@@ -32,7 +32,7 @@ def daemon(name, options = {})
     w.stop_timeout = 10.seconds
 
     # God will always keep process running unless it was manually terminated.
-    w.keepalive
+    w.keepalive(:memory_max => 999.megabytes)
 
     # In production Docker environment logs go to /dev/stdout.
     if RAILS_ENV == 'production'
