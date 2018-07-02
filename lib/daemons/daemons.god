@@ -40,7 +40,9 @@ def daemon(name, options = {})
     #
     # In non-production environment logs go to files.
     else
-      w.log = "#{RAILS_ROOT}/log/daemons/#{filesafe_name}.log"
+        if filesafe_name != 'amqp:deposit_coin_address'
+            w.log = "#{RAILS_ROOT}/log/daemons/#{filesafe_name}.log"
+        end
     end
 
     # Allow customizations.

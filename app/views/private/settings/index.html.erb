@@ -4,9 +4,12 @@
   </h3>
 <% end %>
 
-<h4><a href="http://blockverse.io:3030/phones/new">VERIFY YOUR PHONE</a> </h4> 
-<h2><a href="http://blockverse.io:3030/documents/new">VERIFY YOUR DOCUMENTS</a>  </h2>
-
+<% if current_user.level == 3 %>
+    <%= link_to 'Verify your phone', 'http://blockverse.io:3030/phones/new', class: 'btn btn-primary btn-block mb-4' %>
+<% end %>
+<% if current_user.level == 3 %>
+    <%= link_to 'Verify your identity', 'http://blockverse.io:3030/documents/new', class: 'btn btn-primary btn-block mb-4' %> 
+<% end %>
 <% content_for :guide do %>
   <% if current_user.admin? %>
     <span class="badge badge-warning">ADMIN</span>

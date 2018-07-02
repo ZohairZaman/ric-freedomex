@@ -569,10 +569,10 @@ en:
   'false': false
   view_on_github: View on Github
   slogan:
-    heading: Peatio Open-Source Exchange
-    subheading: Cloud deployment made simple and secure
-    text1: Cryptocurrency exchange for managing digital currency.
-    text2: We provide Peatio installation and configuration services.
+    heading: Blockverse Test
+    subheading: Trades made simple. 
+    text1: Cryptocurrency exchange for managing digital currencies.
+    text2: Test environment running on crypto testnets (i.e testing currency).
   trade:
     markets: Markets
     realtime_price:
