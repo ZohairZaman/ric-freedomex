@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-center">
     <div class="welcome-logo">
-      <a href="https://peatio.tech" target="blank">
+      <a href="http://blockverse.io" target="blank">
         <img src="<%= ENV['LOGO_URL'] || image_path('logo.svg') %>">
       </a>
     </div>
@@ -28,9 +28,13 @@
         <% # Output button for enabled OAuth2 provider. %>
         <% provider = ENV['OAUTH2_SIGN_IN_PROVIDER'] %>
         <% unless provider.blank? %>
-          <a class="btn btn-primary btn-lg btn-block" href="/auth/<%= provider == 'google' ? 'google_oauth2' : provider %>" role="button">
-            <small><%= t("header.sign_in_with_#{provider}") %></small>
+          <a class="btn btn-primary btn-lg btn-block" href="auth/barong" role="button">
+              <small><%= t("header.sign_in") %></small>
           </a>
+          <a class="btn btn-primary btn-lg btn-block" href="accounts/sign_up" role="button">
+            <small><%= t("header.sign_up") %></small>
+          </a>
+ 
         <% end %>
       </div>
     <% else %>

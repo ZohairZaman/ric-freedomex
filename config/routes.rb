@@ -22,7 +22,9 @@ Peatio::Application.routes.draw do
 
   root 'welcome#index'
   get '/signout' => 'sessions#destroy', :as => :signout
-  get '/auth/failure' => 'sessions#failure', :as => :failure
+  get '/auth/failure' => 'sessions#failure', :as => :failure 
+  get 'custom/about', to: 'custom#about'
+  get 'custom/home', to: 'custom#home'
   match '/auth/:provider/callback' => 'sessions#create', via: %i[get post]
 
   scope module: :private do

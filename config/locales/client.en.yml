@@ -21,10 +21,10 @@ en:
       deposit_coin:
         title: '{{currency}} Deposit'
         address: Address
-        open-wallet: Please use your common wallet services, local wallet, mobile terminal or online wallet, select a payment and send.
-        detail: Please paste the address blow in your wallet, and fill in the amount you want to deposit, then confirm and send.
-        scan-qr: Scanning QR code to Pay for In the mobile terminal wallet.
-        after_deposit: Once you complete sending, you can check the status of your new deposit below.
+        open-wallet: Use a testnet faucet in order to receive test currency.
+        detail: Please paste the given address into the testnet address section of the faucet website, and fill in the amount you want to deposit (if given the option), then confirm and send.
+        scan-qr: Scanning QR code is also enabled
+        after_deposit: Once sent, you can check the status of your new deposit below. Deposits are locked until 1 confirmation is granted
         generate-new: Generate new address
 
       deposit_history:
@@ -57,7 +57,7 @@ en:
 
       withdraw_coin:
         title: '{{currency}} Withdraw'
-        intro: Please fill in the address and amount, then submit the form. It will be confirmed in 10 minutes
+        intro: Please fill in the deposit address and the amount you want to withdraw. Please note that you will not be able to withdraw any of the initial starting balances given to you (300). You will be able to withdraw actual test currency from testnets
         label: Label
         balance: Balance
         min: At least

@@ -32,7 +32,7 @@ def daemon(name, options = {})
     w.stop_timeout = 10.seconds
 
     # God will always keep process running unless it was manually terminated.
-    w.keepalive
+    w.keepalive(:memory_max => 999.megabytes)
 
     # In production Docker environment logs go to /dev/stdout.
     if RAILS_ENV == 'production'
@@ -40,7 +40,9 @@ def daemon(name, options = {})
     #
     # In non-production environment logs go to files.
     else
-      w.log = "#{RAILS_ROOT}/log/daemons/#{filesafe_name}.log"
+        if filesafe_name != 'amqp:deposit_coin_address'
+            w.log = "#{RAILS_ROOT}/log/daemons/#{filesafe_name}.log"
+        end
     end
 
     # Allow customizations.
