@@ -1,6 +1,3 @@
-<% if ENV['MARKETS_CONFIG'] %>
-<%= File.read(ENV['MARKETS_CONFIG']) %>
-<% else %>
 - id:            usdbtc
   ask_unit:      usd
   bid_unit:      btc
@@ -560,5 +557,3 @@
   bid_precision: 4
   position:      806
   enabled:       true
-
-<% end %>
