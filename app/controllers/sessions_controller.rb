@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
   def destroy
     destroy_member_sessions(current_user.id)
     reset_session
-    redirect_to root_path
+    redirect_to '/accounts/sign_out'
   end
 
 private

@@ -41,6 +41,16 @@ html, body {
   #content {
     padding-top: 15px;
 
+    #setting_list.table {
+        tr:first-of-type { td { border-top: 0px;  }  }
+        .hint {
+            color: #777;
+            font-size: .7em;
+            text-align: center;
+            padding-top: 8px;                                             
+        }          
+    }
+
     .list-group {
       margin-right: -15px;
       margin-bottom: 0px;
@@ -116,4 +126,51 @@ footer.footer {
   h5 i.fa { margin-right: 10px; }
 }
 
+/* Generic div containers
+------------------------------------------------------ */
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.centered-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Settings elements styling
+------------------------------------------------------ */
+.settings-container {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 1px solid #ced4da;
+    &.first {
+        padding-top: 0px;
+    }
+}
+.check-button {
+    margin-left: auto;
+    color: white;
+    width: 30%;
+
+    .pending-task {
+        background-color: $pending-btn-color;
+        width: 100%;
+        color: white;
+    }
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.text-container {
+    margin: 0 0 5px 20px;
+}
 @import 'layouts/custom';

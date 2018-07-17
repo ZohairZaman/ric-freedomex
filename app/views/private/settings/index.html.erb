@@ -4,12 +4,79 @@
   </h3>
 <% end %>
 
-<% if current_user.level == 3 %>
-    <%= link_to 'Verify your phone', 'http://blockverse.io:3030/phones/new', class: 'btn btn-primary btn-block mb-4' %>
-<% end %>
-<% if current_user.level == 3 %>
-    <%= link_to 'Verify your identity', 'http://blockverse.io:3030/documents/new', class: 'btn btn-primary btn-block mb-4' %> 
-<% end %>
+<div class="settings-table" id="settings-list">
+    <div>
+        <div class="row-container settings-container first">
+            <div class="col-xs-2 icon-container">
+                <i class="fa fa-envelope-o fa-2x"></i>
+            </div>
+            <div class="col-xs-15 text-container">
+                <h4>E-mail verification</h4>
+                <span class="text-ignore">Verify your email</span>
+            </div>
+            <div class="col-xs-7 vertical-center check-button centered-container">
+                <% if current_user.level > 0 %>
+                    <a class="btn btn-success btn-block disabled" role="button">
+                        <i class="fa fa-check-circle"></i>
+                        <span>Verified</span>
+                    </a>
+                <% else %>
+                    <a class="btn btn-default btn-block pending-task" href="/">Verify</a>
+                <% end %>
+            </div>
+        </div>
+        <div class="row-container settings-container">
+            <div class="col-xs-2 icon-container">
+                <i class="fa fa-phone fa-2x"></i>
+            </div>
+            <div class="col-xs-15 text-container">
+                <h4>Phone verification <i class ="fa fa-bolt"></i></h4>
+                <span class="text-ignore">Verify your phone</span>
+            </div>
+            <div class="col-xs-7 vertical-center check-button centered-container">
+                <% if current_user.level > 1 %>
+                    <a class="btn btn-success btn-block disabled" role="button">
+                        <i class="fa fa-check-circle"></i>
+                        <span>Verified</span>
+                    </a>
+                <% else %>
+                    <a class="btn btn-default btn-block pending-task" href="http://blockverse.io/phones/new">Verify</a>
+                <% end %>
+            </div>
+        </div>
+        <div class="row-container settings-container">
+            <div class="col-xs-2 icon-container">
+                <i class="fa fa-id-badge fa-2x"></i>
+            </div>
+            <div class="col-xs-15 text-container">
+                <h4>Identity verification <i class ="fa fa-bolt"></i></h4>
+                <span class="text-ignore">Verify your identity</span>
+            </div>
+            <div class="col-xs-7 vertical-center check-button centered-container">
+                <% if current_user.level > 2 %>
+                    <a class="btn btn-success btn-block disabled" role="button">
+                        <i class="fa fa-check-circle"></i>
+                        <span>Verified</span>
+                    </a>
+                <% else %>
+                    <a class="btn btn-default btn-block pending-task" href="http://blockverse.io/documents/new">Verify</a>
+                <% end %>
+            </div>
+        </div>
+        <div class="row-container settings-container">
+            <div class="col-xs-2 icon-container">
+                <i class="fa fa-key fa-2x"></i>
+            </div>
+            <div class="col-xs-15 text-container">
+                <h4>Password</h4>
+                <span class="text-ignore">Change your password</span>
+            </div>
+            <div class="col-xs-7 vertical-center check-button centered-container">
+                <a class="btn btn-default btn-block pending-task" href="/accounts/edit">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>
 <% content_for :guide do %>
   <% if current_user.admin? %>
     <span class="badge badge-warning">ADMIN</span>
