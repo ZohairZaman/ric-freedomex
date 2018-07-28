@@ -9,7 +9,7 @@ defaults: &defaults
   ADMIN: 'admin@blockverse.io'
 
   # site host
-  URL_HOST: blockverse.io
+  URL_HOST: <%= ENV.fetch('URL_HOST') %>
   URL_SCHEME: http
   FORCE_SECURE_CONNECTION: 'false' # Set to "true" to disable access via unsecured HTTP, send HSTS headers and use secure cookies.
 
@@ -48,7 +48,7 @@ defaults: &defaults
   # See https://github.com/zquestz/omniauth-google-oauth2
   GOOGLE_CLIENT_ID: 104298683637-j7h4lj8upa44ojk6d4cd0ebmpa67vte3.apps.googleusercontent.com
   GOOGLE_CLIENT_SECRET: V1f8MVr9qB1YfzWaygh2tNai
-  GOOGLE_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/google_oauth2/callback # Specify URL address to which user will be redirected after successful sign in.
+  GOOGLE_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/google_oauth2/callback %> # Specify URL address to which user will be redirected after successful sign in.
 
   # Configuration variables for sign in with Auth0.
   # See https://github.com/auth0/omniauth-auth0
@@ -64,8 +64,8 @@ defaults: &defaults
   # See more information at https://github.com/doorkeeper-gem/doorkeeper/wiki/Testing-your-provider-with-OAuth2-gem
   BARONG_CLIENT_ID:           b224ad08ff71e3d8731c44e2cc529cac119659229ab7ef3a4b9c7daa43320bd1
   BARONG_CLIENT_SECRET:       d50f8003a4238528d2172a8f1e12071ff08334b6c848541288a886670044d48d
-  BARONG_DOMAIN:              http://127.0.0.1:3030
-  BARONG_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/barong/callback  # Specify URL address to which user will be redirected after successful sign in.
+  BARONG_DOMAIN:              <%= ENV.fetch('BARONG_URL_HOST') %>
+  BARONG_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/barong/callback %>  # Specify URL address to which user will be redirected after successful sign in.
 
   # Configuration variables for API CORS.
   #
@@ -140,7 +140,7 @@ defaults: &defaults
   #
   #   curl -H "Authorization: Bearer TOKEN" http://localhost:3000/api/v2/members/me
   #
-  JWT_PUBLIC_KEY:         LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF0QnBuLzJKdHgrMmpaTnNSVVRySwplVXlWQUFOR0l0WjlFZ3ZPR3VGNTZTR2wwZlRvbTh6Q2Zaak82a0FtT0pGcjcvRkUvbUJtby8wNnJvc3FqMzA0CnRRZUNSaitrOE5kbk5EcUNaZzc4TjlaWmJNYmJqRjdzMmRVNDBoL3A4NVJVOEY1aExZZDFHQmZDeE9kcGFJMGMKaWFBS3dGTHdKSGRrdUxkanZyWGE1aXl2UGdCUlR1b2k5TTd2cFh5RUtQNmlXbk95anRML1E3eDhlYTExOFhGRAorYTZCaVlrZTVkaEd3NThUNTFSblZuQjdQd2x2R0NYd3lxTlhjSUFMNERHaHd2cnJIZVAybmt5UFRwbDkvUys1Cm1xZ0Q5dkdrM00yNWczY0FzblBOeW1uTVBicHJaV0tWeUlrU0N3YXpQOW9HSWhzdmtHS0Z1bkw1ZUxhQ0hmWlYKZlFJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
+  JWT_PUBLIC_KEY:        <%= ENV.fetch('PEATIO_PUBLIC_KEY') %>
   JWT_ALGORITHM:         RS256  # JWT signing algorithm (mandatory).
   JWT_ISSUER:            ~      # JWT issuer name (optional).
   JWT_AUDIENCE:          peatio # Could be comma-separated value (optional).
@@ -174,7 +174,7 @@ development:
   # Development configuration variables for sign in with Google.
   GOOGLE_CLIENT_ID:           104298683637-j7h4lj8upa44ojk6d4cd0ebmpa67vte3.apps.googleusercontent.com
   GOOGLE_CLIENT_SECRET:       V1f8MVr9qB1YfzWaygh2tNai
-  GOOGLE_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/google_oauth2/callback
+  GOOGLE_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/google_oauth2/callback %>
   # Development configuration variables for sign in with Auth0.
   AUTH0_OAUTH2_DOMAIN:        peatio-playground.auth0.com
   AUTH0_OAUTH2_CLIENT_ID:     lGKS9ADpknQr415RNZrrQTf3Jh8k2Fvc
@@ -182,8 +182,8 @@ development:
 
   BARONG_CLIENT_ID:           b224ad08ff71e3d8731c44e2cc529cac119659229ab7ef3a4b9c7daa43320bd1
   BARONG_CLIENT_SECRET:       d50f8003a4238528d2172a8f1e12071ff08334b6c848541288a886670044d48d
-  BARONG_DOMAIN:              http://blockverse.io:3030
-  BARONG_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/barong/callback  # Specify URL address to which user will be redirected after successful sign in.
+  BARONG_DOMAIN:              <%= ENV.fetch('BARONG_URL_HOST') %>
+  BARONG_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/barong/callback %>  # Specify URL address to which user will be redirected after successful sign in.
 
 test:
   <<: *defaults
