@@ -71,4 +71,4 @@ RUN ./bin/init_config \
 EXPOSE 3000
 
 # The main command to run when the container starts.
-CMD ["bundle", "exec", "puma", "--config", "config/puma.rb"]
+CMD ["bundle", "exec", "puma", "--config", "config/puma.rb","-b","0.0.0.0"]
