@@ -5,49 +5,50 @@ defaults: &defaults
   REDIS_URL:      redis://localhost:6379
   REDIS_PASSWORD: ~ # By default no password is sent to Redis server. Change this if you want to connect using password.
 
-  # Comma-separated list of administrators.
-  ADMIN: 'admin@peatio.tech'
+  # admin role account
+  ADMIN: 'admin@blockverse.io'
 
-  # Application URL configuration variables.
-  URL_HOST:                peatio.io
-  URL_SCHEME:              http
+  # site host
+  URL_HOST: blockverse.io
+  URL_SCHEME: http
   FORCE_SECURE_CONNECTION: 'false' # Set to "true" to disable access via unsecured HTTP, send HSTS headers and use secure cookies.
 
   # Session lifetime in seconds.
   SESSION_LIFETIME: '3600'
 
-  # WebSocket Streaming API settings.
-  WEBSOCKET_HOST:  0.0.0.0
+  # WebSocket Streaming API settings
+  WEBSOCKET_HOST: 0.0.0.0
   WEBSOCKET_PORT: '8080'
-  # Use the following lines to specify paths to SSL key and certificate to enable secure WebSocket (WSS).
-  WEBSOCKET_SSL_KEY:  ~
-  WEBSOCKET_SSL_CERT: ~
+
+  # Uncomment following lines to enable secure WebSocket (wss)
+  # WEBSOCKET_SSL_KEY: 'your_server.key'
+  # WEBSOCKET_SSL_CERT: 'your_server.crt'
 
   # Configuration variables for logger.
   LOG_LEVEL: ~ # Default level for production is warn, otherwise – debug.
 
   # Configuration variables for Pusher.
-  PUSHER_APP:              '468163'
-  PUSHER_SECRET:           671b8d34f5ed60160172
-  PUSHER_HOST:             api-eu.pusher.com
+  PUSHER_APP:              '541119'
+  PUSHER_SECRET:           cfbfc59f5c84f5c1fa4c
+  PUSHER_HOST:             api-us2.pusher.com
   PUSHER_PORT:             '443'
   PUSHER_SCHEME:           https
-  PUSHER_CLIENT_KEY:       995279a074b2cd777cf0
-  PUSHER_CLIENT_HTTP_HOST: sockjs-eu.pusher.com
-  PUSHER_CLIENT_WS_HOST:   ws-eu.pusher.com
+  PUSHER_CLIENT_KEY:       435bcd4546e7fd1c03a2
+  PUSHER_CLIENT_HTTP_HOST: sockjs-us2.pusher.com
+  PUSHER_CLIENT_WS_HOST:   ws-us2.pusher.com
   PUSHER_CLIENT_WS_PORT:   '80'
   PUSHER_CLIENT_WSS_PORT:  '443'
   PUSHER_CLIENT_ENCRYPTED: 'on'
 
   # Enabled OAuth2 provider.
   # Don't forget to check out configuration at config/initializers/omniauth.rb.
-  OAUTH2_SIGN_IN_PROVIDER: ~
+  OAUTH2_SIGN_IN_PROVIDER: google
 
   # Configuration variables for sign in with Google.
   # See https://github.com/zquestz/omniauth-google-oauth2
-  GOOGLE_CLIENT_ID:
-  GOOGLE_CLIENT_SECRET:
-  GOOGLE_OAUTH2_REDIRECT_URL: ~ # Specify URL address to which user will be redirected after successful sign in.
+  GOOGLE_CLIENT_ID: 104298683637-j7h4lj8upa44ojk6d4cd0ebmpa67vte3.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET: V1f8MVr9qB1YfzWaygh2tNai
+  GOOGLE_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/google_oauth2/callback # Specify URL address to which user will be redirected after successful sign in.
 
   # Configuration variables for sign in with Auth0.
   # See https://github.com/auth0/omniauth-auth0
@@ -61,10 +62,10 @@ defaults: &defaults
   #
   # Barong uses Doorkeeper under the hood so you can refer to it's docs any time.
   # See more information at https://github.com/doorkeeper-gem/doorkeeper/wiki/Testing-your-provider-with-OAuth2-gem
-  BARONG_CLIENT_ID:           ~
-  BARONG_CLIENT_SECRET:       ~
-  BARONG_DOMAIN:              ~
-  BARONG_OAUTH2_REDIRECT_URL: ~ # Specify URL address to which user will be redirected after successful sign in.
+  BARONG_CLIENT_ID:           b224ad08ff71e3d8731c44e2cc529cac119659229ab7ef3a4b9c7daa43320bd1
+  BARONG_CLIENT_SECRET:       d50f8003a4238528d2172a8f1e12071ff08334b6c848541288a886670044d48d
+  BARONG_DOMAIN:              http://127.0.0.1:3030
+  BARONG_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/barong/callback  # Specify URL address to which user will be redirected after successful sign in.
 
   # Configuration variables for API CORS.
   #
@@ -85,7 +86,7 @@ defaults: &defaults
   #   The default URL is /webhooks/btc/hook.
 
   # Customize page metadata like title, description & keywords for landing, cabinet & admin modules.
-  METADATA_TITLE:       Peatio Exchange
+  METADATA_TITLE:       Blockverse Exchange
   METADATA_DESCRIPTION: The Opensource Cryptocurrency Exchange
   METADATA_KEYWORDS:    Peatio,Opensource,Exchange,Cryptocurrency
 
@@ -139,7 +140,7 @@ defaults: &defaults
   #
   #   curl -H "Authorization: Bearer TOKEN" http://localhost:3000/api/v2/members/me
   #
-  JWT_PUBLIC_KEY:        ~
+  JWT_PUBLIC_KEY:         LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF0QnBuLzJKdHgrMmpaTnNSVVRySwplVXlWQUFOR0l0WjlFZ3ZPR3VGNTZTR2wwZlRvbTh6Q2Zaak82a0FtT0pGcjcvRkUvbUJtby8wNnJvc3FqMzA0CnRRZUNSaitrOE5kbk5EcUNaZzc4TjlaWmJNYmJqRjdzMmRVNDBoL3A4NVJVOEY1aExZZDFHQmZDeE9kcGFJMGMKaWFBS3dGTHdKSGRrdUxkanZyWGE1aXl2UGdCUlR1b2k5TTd2cFh5RUtQNmlXbk95anRML1E3eDhlYTExOFhGRAorYTZCaVlrZTVkaEd3NThUNTFSblZuQjdQd2x2R0NYd3lxTlhjSUFMNERHaHd2cnJIZVAybmt5UFRwbDkvUys1Cm1xZ0Q5dkdrM00yNWczY0FzblBOeW1uTVBicHJaV0tWeUlrU0N3YXpQOW9HSWhzdmtHS0Z1bkw1ZUxhQ0hmWlYKZlFJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg==
   JWT_ALGORITHM:         RS256  # JWT signing algorithm (mandatory).
   JWT_ISSUER:            ~      # JWT issuer name (optional).
   JWT_AUDIENCE:          peatio # Could be comma-separated value (optional).
@@ -151,7 +152,7 @@ defaults: &defaults
   # Capybara configuration variables.
   TEST_SERVER_HOST: 127.0.0.1
   TEST_SERVER_PORT: '3000'
-  TEST_APP_HOST:    peatio.io
+  TEST_APP_HOST:    peatio.local
   TEST_APP_PORT:    '80'
 
   # Scout APM configuration variables.
@@ -164,25 +165,25 @@ defaults: &defaults
   # The specified currency should exist in database.
   DISPLAY_CURRENCY: usd
 
-  # Configuration variables for dynamic Barong levels (1.8+).
-  MINIMUM_MEMBER_LEVEL_FOR_DEPOSIT:  '3'
-  MINIMUM_MEMBER_LEVEL_FOR_WITHDRAW: '3'
-  MINIMUM_MEMBER_LEVEL_FOR_TRADING:  '3'
-
 development:
   <<: *defaults
 
   # Development OAuth2 provider.
-  OAUTH2_SIGN_IN_PROVIDER:    google
+  OAUTH2_SIGN_IN_PROVIDER:    barong
 
   # Development configuration variables for sign in with Google.
-  GOOGLE_CLIENT_ID:           1044454023387-emhp5vmfnp5cf1n9juk09g8gcckrova7.apps.googleusercontent.com
-  GOOGLE_CLIENT_SECRET:       tAFZvO200-0z3MpCyOpkPH0G
-
+  GOOGLE_CLIENT_ID:           104298683637-j7h4lj8upa44ojk6d4cd0ebmpa67vte3.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET:       V1f8MVr9qB1YfzWaygh2tNai
+  GOOGLE_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/google_oauth2/callback
   # Development configuration variables for sign in with Auth0.
   AUTH0_OAUTH2_DOMAIN:        peatio-playground.auth0.com
   AUTH0_OAUTH2_CLIENT_ID:     lGKS9ADpknQr415RNZrrQTf3Jh8k2Fvc
   AUTH0_OAUTH2_CLIENT_SECRET: LxUPnrrrpRHSB-vVgWU3TwmakQ8acY5mYVTaVgkREQL3i9avjpOnWTXSSEsrbLzK
+
+  BARONG_CLIENT_ID:           b224ad08ff71e3d8731c44e2cc529cac119659229ab7ef3a4b9c7daa43320bd1
+  BARONG_CLIENT_SECRET:       d50f8003a4238528d2172a8f1e12071ff08334b6c848541288a886670044d48d
+  BARONG_DOMAIN:              http://blockverse.io:3030
+  BARONG_OAUTH2_REDIRECT_URL: http://blockverse.io/auth/barong/callback  # Specify URL address to which user will be redirected after successful sign in.
 
 test:
   <<: *defaults

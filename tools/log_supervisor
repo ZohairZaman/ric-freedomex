@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+import os
+import time
+
+LOG_DIR = os.getenv('HOME') + '/code/peatio/log/daemons'
+MAX_SIZE = 10000000000
+while 1 == 1:
+    os.chdir(LOG_DIR)
+    for file in os.listdir('.'):
+        if os.stat(file).st_size > MAX_SIZE:
+            os.remove(file)
+
+    time.sleep(1000)
+

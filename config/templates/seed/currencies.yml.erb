@@ -1,7 +1,5 @@
-<% if ENV['CURRENCIES_CONFIG'] %>
-<%= File.read(ENV['CURRENCIES_CONFIG']) %>
-<% else %>
-- id:                   usd
+- id:                   1
+  code:                 usd
   symbol:               '$'
   type:                 fiat
   precision:            2
@@ -11,7 +9,30 @@
   deposit_fee:          0
   withdraw_fee:         0
 
-- id:                   btc
+- id:                   10    
+  code:                 inr
+  symbol:               '₹'
+  type:                 fiat
+  precision:            2
+  base_factor:          1
+  enabled:              true
+  quick_withdraw_limit: 100000
+  deposit_fee:          0
+  withdraw_fee:         0
+
+- id:                   11
+  code:                 eur
+  symbol:               '€'
+  type:                 fiat
+  precision:            2
+  base_factor:          1
+  enabled:              false
+  quick_withdraw_limit: 1000
+  deposit_fee:          0
+  withdraw_fee:         0
+
+- id:                   2
+  code:                 btc
   symbol:               '฿'
   type:                 coin
   precision:            8
@@ -32,10 +53,10 @@
     api_client: BTC
     #
     # Bitcoind specific configuration.
-    json_rpc_endpoint: http://user:password@127.0.0.1:18332
+    json_rpc_endpoint: http://blockverse:iminlovewiththexanies@10.142.0.3:18332
     #
     # BitGo specific configuration.
-    bitgo_test_net:              on
+    bitgo_test_net:              off
     bitgo_wallet_id:             ~
     bitgo_wallet_address:        ~
     bitgo_wallet_passphrase:     ~
@@ -46,12 +67,13 @@
     wallet_url_template:      https://blockchain.info/address/#{address}
     transaction_url_template: https://blockchain.info/tx/#{txid}
 
-- id:                   xrp
+- id:                   3
+  code:                 xrp
   symbol:               'ꭆ'
   type:                 coin
   precision:            8
   base_factor:          1_000_000
-  enabled:              true
+  enabled:              false
   quick_withdraw_limit: 1000
   deposit_fee:          0
   withdraw_fee:         0
@@ -67,7 +89,7 @@
     api_client: XRP
     #
     # Rippled specific configuration.
-    json_rpc_endpoint: http://user:password@127.0.0.1:5005
+    json_rpc_endpoint: http://104.196.176.111:5005
     #
     # BitGo specific configuration.
     bitgo_test_net:              on
@@ -81,7 +103,8 @@
     wallet_url_template:      https://bithomp.com/explorer/#{address}
     transaction_url_template: https://bithomp.com/explorer/#{txid}
 
-- id:                   bch
+- id:                   4
+  code:                 bch
   symbol:               '฿'
   type:                 coin
   precision:            8
@@ -102,7 +125,7 @@
     api_client: BCH
     #
     # Bitcoin Cash daemon specific configuration.
-    json_rpc_endpoint: http://user:password@127.0.0.1:18332
+    json_rpc_endpoint: http://blockverse:iminlovewiththexanies@10.142.0.11:18332
     #
     # BitGo specific configuration.
     bitgo_test_net:              on
@@ -116,7 +139,8 @@
     wallet_url_template:      https://www.blocktrail.com/BCC/address/#{address}
     transaction_url_template: https://www.blocktrail.com/BCC/tx/#{txid}
 
-- id:                   ltc
+- id:                   5
+  code:                 ltc
   symbol:               'Ł'
   type:                 coin
   precision:            8
@@ -137,7 +161,7 @@
     api_client: LTC
     #
     # Bitcoind specific configuration.
-    json_rpc_endpoint: http://user:password@127.0.0.1:18332
+    json_rpc_endpoint: http://blockverse_litecoin:iminlovewiththexanies@10.142.0.3:19332
     #
     # BitGo specific configuration.
     bitgo_test_net:              on
@@ -151,7 +175,8 @@
     wallet_url_template:      https://www.blocktrail.com/LTC/address/#{address}
     transaction_url_template: https://www.blocktrail.com/LTC/tx/#{txid}
 
-- id:                   dash
+- id:                   6
+  code:                 dash
   symbol:               'Đ'
   type:                 coin
   precision:            8
@@ -172,7 +197,7 @@
     api_client: DASH
     #
     # Dashd specific configuration.
-    json_rpc_endpoint: http://user:password@127.0.0.1:19998
+    json_rpc_endpoint: http://blockverse:iminlovewiththexanies@10.142.0.11:9998
     #
     # BitGo specific configuration.
     bitgo_test_net:              on
@@ -186,7 +211,8 @@
     wallet_url_template:      https://live.blockcypher.com/dash/address/#{address}
     transaction_url_template: https://live.blockcypher.com/dash/tx/#{txid}
 
-- id:                   eth
+- id:                   7
+  code:                 eth
   symbol:               'Ξ'
   type:                 coin
   precision:            8
@@ -207,7 +233,7 @@
     api_client: ETH
     #
     # Ethereum node specific configuration.
-    json_rpc_endpoint: http://user:password@127.0.0.1:8545
+    json_rpc_endpoint: http://35.229.94.233:8545
     #
     # BitGo specific configuration.
     bitgo_test_net:              on
@@ -221,12 +247,13 @@
     wallet_url_template:      https://etherscan.io/address/#{address}
     transaction_url_template: https://etherscan.io/tx/#{txid}
 
-- id:                   trst
+- id:                   8
+  code:                 trst
   symbol:               'Ξ'
   type:                 coin
   precision:            8
   base_factor:          1_000_000 # IMPORTANT: Don't forget to update this variable according
-  enabled:              true      #            to your ERC20-based currency requirements
+  enabled:              false      #            to your ERC20-based currency requirements
   quick_withdraw_limit: 3000      #            (usually can be found on the official website).
   options:
     #
@@ -248,4 +275,3 @@
     # Block explorer configuration.
     wallet_url_template:      https://etherscan.io/address/#{address}
     transaction_url_template: https://etherscan.io/tx/#{txid}
-<% end %>

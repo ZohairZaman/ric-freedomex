@@ -605,7 +605,7 @@ en:
     admin: Admin Panel
     market: Trade
     settings: Profile
-    signout: Exit
+    signout: Sign Out
     funds: Funds
     getstart: Markets
     assets: Solvency
@@ -619,6 +619,8 @@ en:
     total: Total
     deposit: Deposit
     withdraw: Withdraw
+    sign_up: Sign Up
+    sign_in: Sign In
   admin_header:
     deposits: Deposits
     withdraws: Withdraws
