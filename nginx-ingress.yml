@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+          # nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+          #- host: 35.190.92.196
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: peatio
+          servicePort: 3000

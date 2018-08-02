@@ -48,7 +48,7 @@ defaults: &defaults
   # See https://github.com/zquestz/omniauth-google-oauth2
   GOOGLE_CLIENT_ID: 104298683637-j7h4lj8upa44ojk6d4cd0ebmpa67vte3.apps.googleusercontent.com
   GOOGLE_CLIENT_SECRET: V1f8MVr9qB1YfzWaygh2tNai
-  GOOGLE_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/google_oauth2/callback %> # Specify URL address to which user will be redirected after successful sign in.
+  GOOGLE_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + '/auth/google_oauth2/callback' %> # Specify URL address to which user will be redirected after successful sign in.
 
   # Configuration variables for sign in with Auth0.
   # See https://github.com/auth0/omniauth-auth0
@@ -65,8 +65,8 @@ defaults: &defaults
   BARONG_CLIENT_ID:           b224ad08ff71e3d8731c44e2cc529cac119659229ab7ef3a4b9c7daa43320bd1
   BARONG_CLIENT_SECRET:       d50f8003a4238528d2172a8f1e12071ff08334b6c848541288a886670044d48d
   BARONG_DOMAIN:              <%= ENV.fetch('BARONG_URL_HOST') %>
-  BARONG_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/barong/callback %>  # Specify URL address to which user will be redirected after successful sign in.
-
+  BARONG_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + '/auth/barong/callback' %>  # Specify URL address to which user will be redirected after successful sign in.
+      
   # Configuration variables for API CORS.
   #
   # Set list of allowed origins using the variable below.
@@ -174,7 +174,7 @@ development:
   # Development configuration variables for sign in with Google.
   GOOGLE_CLIENT_ID:           104298683637-j7h4lj8upa44ojk6d4cd0ebmpa67vte3.apps.googleusercontent.com
   GOOGLE_CLIENT_SECRET:       V1f8MVr9qB1YfzWaygh2tNai
-  GOOGLE_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/google_oauth2/callback %>
+  GOOGLE_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + '/auth/google_oauth2/callback' %>
   # Development configuration variables for sign in with Auth0.
   AUTH0_OAUTH2_DOMAIN:        peatio-playground.auth0.com
   AUTH0_OAUTH2_CLIENT_ID:     lGKS9ADpknQr415RNZrrQTf3Jh8k2Fvc
@@ -183,7 +183,7 @@ development:
   BARONG_CLIENT_ID:           b224ad08ff71e3d8731c44e2cc529cac119659229ab7ef3a4b9c7daa43320bd1
   BARONG_CLIENT_SECRET:       d50f8003a4238528d2172a8f1e12071ff08334b6c848541288a886670044d48d
   BARONG_DOMAIN:              <%= ENV.fetch('BARONG_URL_HOST') %>
-  BARONG_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + /auth/barong/callback %>  # Specify URL address to which user will be redirected after successful sign in.
+  BARONG_OAUTH2_REDIRECT_URL: <%= ENV.fetch('URL_HOST') + '/auth/barong/callback' %>  # Specify URL address to which user will be redirected after successful sign in.
 
 test:
   <<: *defaults

@@ -23,6 +23,8 @@ ENV MINIMUM_MEMBER_LEVEL_FOR_WITHDRAW=0
 ENV MINIMUM_MEMBER_LEVEL_FOR_TRADING=0
 ENV SENDER_NAME=Blockverse
 ENV APP_NAME=Blockverse
+ENV BARONG_URL_HOST=http://127.0.0.1:3030
+ENV URL_HOST=http://127.0.0.1
 
 # Allow customization of user ID and group ID (it's useful when you use Docker bind mounts)
 ARG UID=1000
@@ -71,4 +73,4 @@ RUN ./bin/init_config \
 EXPOSE 3000
 
 # The main command to run when the container starts.
-CMD ["bundle", "exec", "puma", "--config", "config/puma.rb"]
+CMD ["bundle", "exec", "puma", "--config", "config/puma.rb","-b","0.0.0.0"]
