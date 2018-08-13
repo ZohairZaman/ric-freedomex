@@ -32,7 +32,7 @@ class Market < ActiveRecord::Base
   validates :ask_unit, :bid_unit, inclusion: { in: -> (_) { Currency.codes } }
   validate  :precisions_must_be_same
   validate  :units_must_be_enabled, if: :enabled?
-  validate  :referral_percentage, numericality: { greater_than_or_equal_to: 0 }
+  validates  :referral_percentage, numericality: { greater_than_or_equal_to: 0 }
 
   before_validation(on: :create) { self.id = "#{ask_unit}#{bid_unit}" }
 
