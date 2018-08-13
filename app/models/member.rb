@@ -88,6 +88,10 @@ class Member < ActiveRecord::Base
     @is_admin ||= self.class.admins.include?(self.email)
   end
 
+  def referred_by
+    Member.find_by_id(self.referred_by_id) if self.referred_by_id
+  end
+
   def get_account(model_or_id_or_code)
     accounts.with_currency(model_or_id_or_code).first.yield_self do |account|
       touch_accounts unless account
@@ -165,7 +169,7 @@ class Member < ActiveRecord::Base
 end
 
 # == Schema Information
-# Schema version: 20180808174908
+# Schema version: 20180809235908
 #
 # Table name: members
 #
