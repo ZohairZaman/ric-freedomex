@@ -32,6 +32,7 @@ class Member < ActiveRecord::Base
           member.email    = info_hash.fetch('email')
           member.level    = info_hash['level'] if info_hash.key?('level')
           member.disabled = info_hash.key?('state') && info_hash['state'] != 'active'
+          member.referred_by_id    = info_hash.fetch('referred_by_id')
           member.save!
           auth = Authentication.locate(auth_hash) || member.authentications.from_omniauth_data(auth_hash)
           auth.token = auth_hash.dig('credentials', 'token')
@@ -156,11 +157,15 @@ private
         event:     event,
         data:      data
     end
+
+    def referral_link
+
+    end
   end
 end
 
 # == Schema Information
-# Schema version: 20180530122201
+# Schema version: 20180808174908
 #
 # Table name: members
 #
@@ -172,10 +177,12 @@ end
 #  api_disabled :boolean          default(FALSE), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  referred_by_id :integer
 #
 # Indexes
 #
 #  index_members_on_disabled  (disabled)
 #  index_members_on_email     (email) UNIQUE
 #  index_members_on_sn        (sn) UNIQUE
+#  index_members_on_referred_by_id  (referred_by_id)
 #

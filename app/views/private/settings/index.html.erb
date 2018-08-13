@@ -75,6 +75,18 @@
                 <a class="btn btn-default btn-block pending-task" href="/accounts/edit">Change Password</a>
             </div>
         </div>
+        <div class="row-container settings-container">
+        <div class="col-xs-2 icon-container">
+          <i class="fa fa-key fa-2x"></i>
+        </div>
+        <div class="col-xs-15 text-container">
+          <h4>Referral Link</h4>
+          <span class="text-ignore"><%= current_user.uid %></span>
+        </div>
+        <div class="col-xs-7 vertical-center check-button centered-container">
+          <a class="btn btn-info btn-block" href="/accounts/edit">Copy Link</a>
+        </div>
+      </div>
     </div>
 </div>
 <% content_for :guide do %>
