@@ -123,7 +123,11 @@ class Member < ActiveRecord::Base
     self.class.trigger_pusher_event(self, event, data)
   end
 
-private
+  def referral_link
+    "#{ENV["BARONG_URL_HOST"]}/accounts/sign_up?ref=#{self.uid}"
+  end
+
+  private
 
   def downcase_email
     self.email = email.try(:downcase)
@@ -156,10 +160,6 @@ private
         member_id: self === member_or_id ? member_or_id.id : member_or_id,
         event:     event,
         data:      data
-    end
-
-    def referral_link
-
     end
   end
 end
