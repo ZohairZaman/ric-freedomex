@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180710212846) do
+ActiveRecord::Schema.define(version: 20180809235908) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "member_id",   limit: 4,                                            null: false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20180710212846) do
     t.boolean  "enabled",                                           default: true, null: false
     t.datetime "created_at",                                                       null: false
     t.datetime "updated_at",                                                       null: false
+    t.decimal  "referral_percentage",           precision: 32, scale: 16, default: 0.0,  null: false
   end
 
   add_index "markets", ["ask_unit", "bid_unit"], name: "index_markets_on_ask_unit_and_bid_unit", unique: true, using: :btree
@@ -120,10 +121,12 @@ ActiveRecord::Schema.define(version: 20180710212846) do
     t.boolean  "api_disabled",             default: false, null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "referred_by_id", limit: 4
   end
 
   add_index "members", ["disabled"], name: "index_members_on_disabled", using: :btree
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
+  add_index "members", ["referred_by_id"], name: "index_members_on_referred_by_id", using: :btree
   add_index "members", ["sn"], name: "index_members_on_sn", unique: true, using: :btree
 
   create_table "orders", force: :cascade do |t|

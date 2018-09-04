@@ -83,6 +83,8 @@ class Order < ActiveRecord::Base
     self.funds_received += add
     self.trades_count   += 1
 
+    reward_referee(referee_expect_account!, real_fee)
+
     if volume.zero?
       self.state = Order::DONE
 
@@ -155,6 +157,11 @@ class Order < ActiveRecord::Base
     raise "Volume too large" if (filled_at-start_from).abs/start_from > FUSE
 
     required_funds
+  end
+
+  def reward_referee(expect_account, trade_fee)
+    return if expect_account.nil?
+    expect_account.plus_funds!(trade_fee * market.referral_percentage / 100) if market.referral_percentage
   end
 
 end

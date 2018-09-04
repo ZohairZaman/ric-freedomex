@@ -17,12 +17,28 @@ class OrderBid < Order
     Account.lock.find_by!(member_id: member_id, currency_id: bid)
   end
 
+  def referee_hold_account
+    member.referred_by.get_account(bid) if member.referred_by_id
+  end
+
+  def referee_hold_account!
+    Account.lock.find_by!(member_id: member.referred_by_id, currency_id: bid) if member.referred_by_id
+  end
+
   def expect_account
     member.get_account(ask)
   end
 
   def expect_account!
     Account.lock.find_by!(member_id: member_id, currency_id: ask)
+  end
+
+  def referee_expect_account
+    member.referred_by.get_account(ask) if member.referred_by_id
+  end
+
+  def referee_expect_account!
+    Account.lock.find_by!(member_id: member.referred_by_id, currency_id: ask) if member.referred_by_id
   end
 
   def avg_price

@@ -32,6 +32,7 @@ class Member < ActiveRecord::Base
           member.email    = info_hash.fetch('email')
           member.level    = info_hash['level'] if info_hash.key?('level')
           member.disabled = info_hash.key?('state') && info_hash['state'] != 'active'
+          member.referred_by_id    = info_hash.fetch('referred_by_id')
           member.save!
           auth = Authentication.locate(auth_hash) || member.authentications.from_omniauth_data(auth_hash)
           auth.token = auth_hash.dig('credentials', 'token')
@@ -87,6 +88,10 @@ class Member < ActiveRecord::Base
     @is_admin ||= self.class.admins.include?(self.email)
   end
 
+  def referred_by
+    Member.find_by_id(self.referred_by_id) if self.referred_by_id
+  end
+
   def get_account(model_or_id_or_code)
     accounts.with_currency(model_or_id_or_code).first.yield_self do |account|
       touch_accounts unless account
@@ -122,7 +127,11 @@ class Member < ActiveRecord::Base
     self.class.trigger_pusher_event(self, event, data)
   end
 
-private
+  def referral_link
+    "#{ENV["BARONG_URL_HOST"]}/accounts/sign_up?ref=#{self.uid}"
+  end
+
+  private
 
   def downcase_email
     self.email = email.try(:downcase)
@@ -160,7 +169,7 @@ private
 end
 
 # == Schema Information
-# Schema version: 20180530122201
+# Schema version: 20180809235908
 #
 # Table name: members
 #
@@ -172,10 +181,12 @@ end
 #  api_disabled :boolean          default(FALSE), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  referred_by_id :integer
 #
 # Indexes
 #
 #  index_members_on_disabled  (disabled)
 #  index_members_on_email     (email) UNIQUE
 #  index_members_on_sn        (sn) UNIQUE
+#  index_members_on_referred_by_id  (referred_by_id)
 #

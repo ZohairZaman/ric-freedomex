@@ -14,7 +14,7 @@ gem 'oauth2', github: 'oauth-xx/oauth2'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-auth0', '~> 2.0.0', require: false
 gem 'omniauth-google-oauth2', '~> 0.5.3', require: false
-gem 'omniauth-barong', '~> 0.1.4', require: false
+gem 'omniauth-barong', github: 'vimalbera92/omniauth-barong'
 gem 'figaro', '~> 1.1.1'
 gem 'hashie', '~> 3.5.7'
 gem 'aasm', '~> 4.12.3'

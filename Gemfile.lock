@@ -9,6 +9,13 @@ GIT
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
 
+GIT
+  remote: https://github.com/vimalbera92/omniauth-barong
+  revision: 08eb657402e1877e00ea935677c36343c4ae8163
+  specs:
+    omniauth-barong (0.1.4)
+      omniauth-oauth2 (~> 1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -238,8 +245,6 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-auth0 (2.0.0)
       omniauth-oauth2 (~> 1.4)
-    omniauth-barong (0.1.4)
-      omniauth-oauth2 (~> 1.5)
     omniauth-google-oauth2 (0.5.3)
       jwt (>= 1.5)
       omniauth (>= 1.1.1)
@@ -457,7 +462,7 @@ DEPENDENCIES
   oauth2!
   omniauth (~> 1.8.1)
   omniauth-auth0 (~> 2.0.0)
-  omniauth-barong (~> 0.1.4)
+  omniauth-barong!
   omniauth-google-oauth2 (~> 0.5.3)
   paper_trail (~> 3.0.9)
   passgen (~> 1.0.2)
@@ -486,4 +491,4 @@ DEPENDENCIES
   webmock (~> 3.3)
 
 BUNDLED WITH
-   1.16.2
+   1.16.3

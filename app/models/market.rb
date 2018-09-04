@@ -32,6 +32,7 @@ class Market < ActiveRecord::Base
   validates :ask_unit, :bid_unit, inclusion: { in: -> (_) { Currency.codes } }
   validate  :precisions_must_be_same
   validate  :units_must_be_enabled, if: :enabled?
+  validates  :referral_percentage, numericality: { greater_than_or_equal_to: 0 }
 
   before_validation(on: :create) { self.id = "#{ask_unit}#{bid_unit}" }
 
@@ -107,7 +108,7 @@ private
 end
 
 # == Schema Information
-# Schema version: 20180605104154
+# Schema version: 20180809235908
 #
 # Table name: markets
 #
@@ -122,6 +123,7 @@ end
 #  enabled       :boolean          default(TRUE), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  referral_percentage :decimal(32, 16)  default(0.0), not null
 #
 # Indexes
 #

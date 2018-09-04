@@ -55,7 +55,8 @@ module Admin
         :ask_unit,
         :ask_fee,
         :enabled,
-        :position
+        :position,
+        :referral_percentage
       ]
 
       if @market.new_record?
